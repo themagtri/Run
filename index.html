@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--
+  איך לערוך את הדף:
+  תמונות - החליפו את images/image1.jpg, images/tp.jpg, images/image2.jpg בתמונות האמיתיות שלכם
+  (שמרו על אותם שמות קבצים, או שנו את ה-src בקוד למטה). עד שתוסיפו תמונה אמיתית יוצג placeholder.
+-->
+<meta name="theme-color" content="#0D1321">
+<meta name="description" content="אימוני ריצה - בניית תוכנית אישית וליווי צמוד להשגת המטרות שלך.">
+<title>אימוני ריצה | בניית תוכנית אישית וליווי</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0D1321;
+    --fog:#EEF0F9;
+    --card:#FFFFFF;
+    --accent:#6C5CE7;
+    --accent-deep:#3D2E82;
+    --text-light:#F3F3FA;
+    --text-muted:rgba(243,243,250,.72);
+    --ink-muted:rgba(13,19,33,.62);
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:'Rubik', sans-serif;
+    background:var(--ink);
+    color:var(--text-light);
+    overflow-x:hidden;
+  }
+
+  .hero{
+    min-height:62vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:100px 24px 76px;
+    background:linear-gradient(165deg, #0D1321 0%, #22314C 40%, var(--accent-deep) 76%, var(--accent) 100%);
+  }
+  .hero h1{
+    font-size:clamp(38px,6.4vw,68px);
+    font-weight:800;
+    letter-spacing:-.5px;
+    text-shadow:0 6px 24px rgba(0,0,0,.3);
+    animation:riseIn .9s ease both;
+  }
+  .hero .tagline{
+    font-size:clamp(16px,2.1vw,19px);
+    font-weight:500;
+    opacity:.92;
+    max-width:480px;
+    margin:16px 0 0;
+    animation:riseIn .9s ease .15s both;
+  }
+
+  @keyframes riseIn{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .hero h1, .hero .tagline{ animation:none; }
+  }
+
+  .row{ display:flex; flex-wrap:wrap; }
+  .cell{
+    flex:1 1 50%;
+    min-width:300px;
+    min-height:460px;
+    padding:64px 46px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+  }
+  .cell.dark{ background:var(--ink); }
+  .cell.light{ background:var(--fog); }
+  .cell.dark h2{
+    font-size:clamp(24px,2.8vw,33px);
+    font-weight:700;
+    line-height:1.4;
+    margin-bottom:18px;
+  }
+  .cell.dark p{
+    font-size:16.5px;
+    line-height:1.85;
+    color:var(--text-muted);
+    max-width:420px;
+  }
+
+  .image-box{
+    width:230px;
+    aspect-ratio:3/4;
+    border-radius:18px;
+    overflow:hidden;
+    position:relative;
+    background:var(--card);
+    box-shadow:0 24px 50px rgba(13,19,33,.28);
+  }
+  .image-box img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .image-box .fallback-text{
+    display:none;
+    width:100%; height:100%;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:0 24px;
+    font-size:13px;
+    line-height:1.6;
+    color:var(--ink-muted);
+  }
+  .image-box.fallback{ background:var(--fog); border:1px solid rgba(13,19,33,.08); }
+  .image-box.fallback .fallback-text{ display:flex; }
+  .image-box.fallback::after{
+    content:attr(data-name);
+    position:absolute;
+    bottom:10px; left:12px;
+    font-size:10px;
+    letter-spacing:.3px;
+    color:rgba(13,19,33,.28);
+  }
+
+  @media (max-width:760px){
+    .row{ flex-direction:column; }
+    /* הפיכת הסדר במובייל: טקסט קודם ואז תמונה בכל שורה */
+    .row .cell.dark { order: 1; }
+    .row .cell.light { order: 2; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>אימוני ריצה</h1>
+  <p class="tagline">בניית תוכנית אישית וליווי.</p>
+</header>
+
+<main>
+  <section class="row row-1">
+    <div class="cell dark">
+      <h2>התאמה ללו"ז שלך, לחיים שלך ולקצב שלך</h2>
+      <p>תוכנית שנבנית סביב החיים, המשפחה והעבודה שלך. תיאום ציפיות מדויק, הצבת יעדים ומטרות - ויוצאים לדרך.</p>
+    </div>
+    <div class="cell light">
+      <div class="image-box" data-name="Image1">
+        <img src="images/image1.jpg" alt="התאמת תוכנית ריצה אישית" onerror="this.parentElement.classList.add('fallback'); this.remove();">
+        <div class="fallback-text">התמונה שלך תופיע כאן</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row row-2">
+    <div class="cell dark">
+      <h2>סנכרון מלא לשעון</h2>
+      <p>מאמן על היד: כל האימונים עוברים אוטומטית ל-TrainingPeaks ולשעון הריצה. פותחים את השעון ורצים.</p>
+    </div>
+    <div class="cell light">
+      <div class="image-box" data-name="TP">
+        <img src="images/tp.jpg" alt="סנכרון אימונים לשעון ריצה" onerror="this.parentElement.classList.add('fallback'); this.remove();">
+        <div class="fallback-text">התמונה שלך תופיע כאן</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="row row-3">
+    <div class="cell dark">
+      <h2>ליווי בתהליך</h2>
+      <p>ניתוח של ההתקדמות בתהליך: בלי סיסמאות, בלי סרטונים, בלי חולצה באינסטגרם. אימון מבוסס מדע אבל שמתאים לך, ולא לספורטאי מקצועי שישן 10 שעות בלילה!</p>
+    </div>
+    <div class="cell light">
+      <div class="image-box" data-name="IMAGE2">
+        <img src="images/image2.jpg" alt="ליווי אישי לאורך התהליך" onerror="this.parentElement.classList.add('fallback'); this.remove();">
+        <div class="fallback-text">התמונה שלך תופיע כאן</div>
+      </div>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
