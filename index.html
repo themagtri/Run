@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--
   איך לערוך את הדף:
-  תמונות - החליפו את images/image1.jpg, images/tp.jpg, images/image2.jpg בתמונות האמיתיות שלכם
-  (שמרו על אותם שמות קבצים, או שנו את ה-src בקוד למטה). עד שתוסיפו תמונה אמיתית יוצג placeholder.
+  תמונות - החליפו את הקישורים בתמונות שלכם.
+  יצירת קשר - רדו לתחתית הקוד כדי להזין את מספר הטלפון והאימייל שלכם.
 -->
 <meta name="theme-color" content="#0D1321">
 <meta name="description" content="אימוני ריצה - בניית תוכנית אישית וליווי צמוד להשגת המטרות שלך.">
@@ -34,29 +34,29 @@
     overflow-x:hidden;
   }
 
+  /* כותרת מוקטנת */
   .hero{
-    min-height:62vh;
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:100px 24px 76px;
+    padding:60px 24px;
     background:linear-gradient(165deg, #0D1321 0%, #22314C 40%, var(--accent-deep) 76%, var(--accent) 100%);
   }
   .hero h1{
-    font-size:clamp(38px,6.4vw,68px);
+    font-size:clamp(32px,5vw,54px);
     font-weight:800;
     letter-spacing:-.5px;
     text-shadow:0 6px 24px rgba(0,0,0,.3);
     animation:riseIn .9s ease both;
   }
   .hero .tagline{
-    font-size:clamp(16px,2.1vw,19px);
+    font-size:clamp(16px,2vw,18px);
     font-weight:500;
     opacity:.92;
     max-width:480px;
-    margin:16px 0 0;
+    margin:12px 0 0;
     animation:riseIn .9s ease .15s both;
   }
 
@@ -69,11 +69,12 @@
   }
 
   .row{ display:flex; flex-wrap:wrap; }
+  
+  /* טאבים מוקטנים שמתאימים לגודל הטקסט */
   .cell{
     flex:1 1 50%;
     min-width:300px;
-    min-height:460px;
-    padding:64px 46px;
+    padding:40px 30px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -83,31 +84,38 @@
   .cell.dark{ background:var(--ink); }
   .cell.light{ background:var(--fog); }
   .cell.dark h2{
-    font-size:clamp(24px,2.8vw,33px);
+    font-size:clamp(22px,2.5vw,28px);
     font-weight:700;
     line-height:1.4;
-    margin-bottom:18px;
+    margin-bottom:14px;
   }
   .cell.dark p{
-    font-size:16.5px;
-    line-height:1.85;
+    font-size:16px;
+    line-height:1.7;
     color:var(--text-muted);
     max-width:420px;
   }
 
+  /* תמונות - בוטל הזום, התמונה תוצג בשלמותה */
   .image-box{
-    width:230px;
-    aspect-ratio:3/4;
-    border-radius:18px;
+    width:100%; 
+    max-width:550px; 
+    border-radius:12px;
     overflow:hidden;
     position:relative;
-    background:var(--card);
-    box-shadow:0 24px 50px rgba(13,19,33,.28);
+    background:transparent; /* קובייה שקופה כדי למנוע שוליים ריקים */
+    box-shadow:0 16px 35px rgba(13,19,33,.15);
   }
-  .image-box img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .image-box img{ 
+    width:100%; 
+    height:auto; /* גובה משתנה בהתאם לפרופורציה המקורית של התמונה (מונע זום) */
+    display:block; 
+  }
+  
+  /* טקסט חלופי במידה ותמונה לא עובדת */
   .image-box .fallback-text{
     display:none;
-    width:100%; height:100%;
+    width:100%; min-height:250px;
     align-items:center;
     justify-content:center;
     text-align:center;
@@ -115,8 +123,9 @@
     font-size:13px;
     line-height:1.6;
     color:var(--ink-muted);
+    background:var(--fog);
   }
-  .image-box.fallback{ background:var(--fog); border:1px solid rgba(13,19,33,.08); }
+  .image-box.fallback{ border:1px solid rgba(13,19,33,.08); }
   .image-box.fallback .fallback-text{ display:flex; }
   .image-box.fallback::after{
     content:attr(data-name);
@@ -127,9 +136,47 @@
     color:rgba(13,19,33,.28);
   }
 
+  /* עיצוב טאב צרו קשר התחתון */
+  .contact-section{
+    background:var(--ink);
+    padding:60px 24px;
+    text-align:center;
+    border-top:2px solid rgba(255,255,255,0.05);
+  }
+  .contact-section h2{
+    font-size:clamp(26px,3vw,34px);
+    font-weight:700;
+    margin-bottom:30px;
+  }
+  .contact-buttons{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:14px 28px;
+    border-radius:50px;
+    font-size:18px;
+    font-weight:600;
+    color:#fff;
+    text-decoration:none;
+    transition:transform 0.2s;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn svg{ width:26px; height:26px; fill:currentColor; }
+  
+  .btn-wa{ background:#25D366; }
+  .btn-wa:hover{ background:#22c35e; }
+  
+  .btn-email{ background:#EA4335; }
+  .btn-email:hover{ background:#d93d30; }
+
   @media (max-width:760px){
     .row{ flex-direction:column; }
-    /* הפיכת הסדר במובייל: טקסט קודם ואז תמונה בכל שורה */
     .row .cell.dark { order: 1; }
     .row .cell.light { order: 2; }
   }
@@ -182,6 +229,27 @@
     </div>
   </section>
 </main>
+
+<!-- טאב תחתון - צרו קשר -->
+<footer class="contact-section">
+  <h2>צרו קשר לפרטים נוספים</h2>
+  <div class="contact-buttons">
+    
+    <!-- כפתור וואטסאפ: שנו את המספר בשורה למטה -->
+    <!-- יש לכתוב מספר עם קידומת בינלאומית, למשל 972501234567 במקום 0501234567 -->
+    <a href="https://wa.me/כאן_להכניס_את_המספר_שלך" target="_blank" class="btn btn-wa">
+      <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.665.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824zm-3.423-14.416c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm.029 18.88c-1.161 0-2.305-.292-3.318-.844l-3.677.964 1.003-3.588c-.608-1.065-.928-2.294-.929-3.551 0-3.921 3.191-7.112 7.113-7.113 3.924.001 7.115 3.192 7.115 7.114 0 3.92-3.191 7.112-7.107 7.118z"/></svg>
+      WhatsApp
+    </a>
+
+    <!-- כפתור אימייל: שנו את כתובת המייל בשורה למטה -->
+    <a href="mailto:כאן_להכניס_את_האימייל_שלך@gmail.com" class="btn btn-email">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+      Gmail
+    </a>
+    
+  </div>
+</footer>
 
 </body>
 </html>
