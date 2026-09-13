@@ -10,7 +10,7 @@
 -->
 <meta name="theme-color" content="#0D1321">
 <meta name="description" content="אימוני ריצה - בניית תוכנית אישית וליווי צמוד להשגת המטרות שלך.">
-<title>להתאמן נכון להגיע למטרה | אימון מבוסס מדע שנתפר במיוחד ללוח הזמנים ולמטרות שלך</title>
+<title>להתאמן נכון. להגיע למטרה | אימון מבוסס מדע שנתפר במיוחד ללוח הזמנים ולמטרות שלך</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -34,7 +34,7 @@
     overflow-x:hidden;
   }
 
-  /* כותרת מוקטנת */
+  /* כותרת */
   .hero{
     display:flex;
     flex-direction:column;
@@ -70,7 +70,7 @@
 
   .row{ display:flex; flex-wrap:wrap; }
   
-  /* טאבים מוקטנים שמתאימים לגודל הטקסט */
+  /* טאבים */
   .cell{
     flex:1 1 50%;
     min-width:300px;
@@ -96,7 +96,7 @@
     max-width:420px;
   }
 
-  /* תמונות - בוטל הזום, התמונה תוצג בשלמותה */
+  /* תמונות */
   .image-box{
     width:100%; 
     max-width:550px; 
@@ -112,7 +112,6 @@
     display:block; 
   }
   
-  /* טקסט חלופי במידה ותמונה לא עובדת */
   .image-box .fallback-text{
     display:none;
     width:100%; min-height:250px;
@@ -136,12 +135,44 @@
     color:rgba(13,19,33,.28);
   }
 
+  /* אזור קצת עליי */
+  .about-section{
+    background:var(--ink);
+    padding:70px 24px;
+    display:flex;
+    justify-content:center;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.05);
+  }
+  .about-content{
+    max-width:600px;
+  }
+  .about-content h2{
+    font-size:clamp(24px,3vw,30px);
+    font-weight:700;
+    margin-bottom:24px;
+    color:var(--text-light);
+  }
+  .about-content p{
+    font-size:17px;
+    line-height:1.7;
+    color:var(--text-muted);
+    margin-bottom:12px;
+  }
+  .about-content .signature{
+    display:block;
+    margin-top:32px;
+    font-size:22px;
+    font-weight:700;
+    color:var(--text-light);
+  }
+
   /* עיצוב טאב צרו קשר התחתון */
   .contact-section{
     background:var(--ink);
-    padding:60px 24px;
+    padding:60px 24px 80px;
     text-align:center;
-    border-top:2px solid rgba(255,255,255,0.05);
+    border-top:1px solid rgba(255,255,255,0.05);
   }
   .contact-section h2{
     font-size:clamp(26px,3vw,34px);
@@ -185,7 +216,7 @@
 <body>
 
 <header class="hero">
-  <h1>להתאמן נכון להגיע למטרה</h1>
+  <h1>להתאמן נכון. להגיע למטרה</h1>
   <p class="tagline">אימון מבוסס מדע שנתפר במיוחד ללוח הזמנים ולמטרות שלך</p>
 </header>
 
@@ -226,6 +257,16 @@
         <img src="TP.png" alt="סנכרון אימונים לשעון ריצה" onerror="this.parentElement.classList.add('fallback'); this.remove();">
         <div class="fallback-text">התמונה שלך תופיע כאן</div>
       </div>
+    </div>
+  </section>
+
+  <!-- אזור קצת עליי חדש -->
+  <section class="about-section">
+    <div class="about-content">
+      <h2>קצת עליי</h2>
+      <p>מאמן ריצה ומדריך טריאתלון מוסמך. רץ, רוכב ומתחרה בשטח ובכביש כבר שנים.</p>
+      <p>ספורט סיבולת הוא הרבה מעבר לזמנים וסטטיסטיקות בשעון – זה דרך חיים, ואת הניסיון הזה אני מעביר הלאה לאימונים שלנו.</p>
+      <span class="signature">שגיא</span>
     </div>
   </section>
 </main>
